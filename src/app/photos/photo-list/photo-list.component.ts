@@ -9,28 +9,30 @@ import { PhotoService } from '../photo/photo.service';
   styleUrl: './photo-list.component.css'
 })
 export class PhotoListComponent implements OnInit {
-  
+
   photos: Photo[] = [];
   filter: string = '';
   hasMore: boolean = true;
   currentPage: number = 1;
   userName: string = '';
 
-  constructor(private activatedRoute: ActivatedRoute, 
+  constructor(private activatedRoute: ActivatedRoute,
     private photoService: PhotoService) { }
-  
-  ngOnInit(): void {  
+
+  // Extrai o nome de usuário da rota e carrega as fotos iniciais.
+  ngOnInit(): void {
     this.userName = this.activatedRoute.snapshot.params['userName'];
     this.photos = this.activatedRoute.snapshot.data['photos'];
-    
   }
 
+  // O método é chamado para carregar mais fotos quando clica no botão 'Load more'.
+  // Usa subscrição para obter fotos paginadas do serviço e as concatena na lista existente.
   load() {
     this.photoService.listFromUserPaginated(this.userName, ++this.currentPage)
-    .subscribe(photos => {
-      this.filter = '';
-      this.photos = this.photos.concat(photos);
-      if (!photos.length) this.hasMore = false
-    });
+      .subscribe(photos => {
+        this.filter = '';
+        this.photos = this.photos.concat(photos);
+        if (!photos.length) this.hasMore = false
+      });
   }
 }
