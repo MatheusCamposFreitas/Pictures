@@ -4,17 +4,30 @@ import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { NotFoundComponent } from './erros/not-found/not-found.component';
 import { photoListResolver } from './photos/photo-list/photo-list.resolver';
+import { SigninComponent } from './home/signin/signin.component';
+import { authGuard } from './core/auth/auth.guard';
 
 const routes: Routes = [
-  { 
-    path: 'user/:userName', component: PhotoListComponent,
-    resolve: { 
+  {
+    path: '',
+    component: SigninComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'user/:userName',
+    component: PhotoListComponent,
+    resolve: {
       photos: photoListResolver
     }
   },
-  { path: 'p/add', component: PhotoFormComponent
-},
-  { path: '**', component: NotFoundComponent},
+  {
+    path: 'p/add',
+    component: PhotoFormComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  },
 ];
 
 @NgModule({
