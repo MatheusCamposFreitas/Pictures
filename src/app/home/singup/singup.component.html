@@ -19,7 +19,7 @@
         <app-vmessage message="User name is required!" *ngIf="signupForm.get('userName')?.hasError('required')"></app-vmessage>
         <app-vmessage message="Minimum length is 2!" *ngIf="signupForm.get('userName')?.hasError('minlength')"></app-vmessage>
         <app-vmessage message="Maximum length is 30" *ngIf="signupForm.get('userName')?.hasError('maxlength')"></app-vmessage>
-        <app-vmessage message="Must be lowercase" *ngIf="signupForm.get('userName')?.hasError('pattern')"></app-vmessage>
+        <app-vmessage message="Must be lowercase" *ngIf="signupForm.get('userName')?.hasError('lowerCase')"></app-vmessage>
     </div>
 
     <div class="form-group">
