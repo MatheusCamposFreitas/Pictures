@@ -6,12 +6,17 @@ import { NotFoundComponent } from './erros/not-found/not-found.component';
 import { photoListResolver } from './photos/photo-list/photo-list.resolver';
 import { SigninComponent } from './home/signin/signin.component';
 import { authGuard } from './core/auth/auth.guard';
+import { SingupComponent } from './home/singup/singup.component';
 
 const routes: Routes = [
   {
     path: '',
     component: SigninComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'singup',
+    component: SingupComponent
   },
   {
     path: 'user/:userName',
