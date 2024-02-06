@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrl: './signup.component.css',
+  providers: [UserNotTakenValidatorService]
 })
 export class SignupComponent implements OnInit {
 
@@ -34,6 +35,6 @@ export class SignupComponent implements OnInit {
     const newUser = this.signupForm.getRawValue() as NewUser;
     this.singupService.signup(newUser)
       .subscribe(() => this.router.navigate(['']),
-      err => console.log('error'));
+        err => console.log('error'));
   }
 }

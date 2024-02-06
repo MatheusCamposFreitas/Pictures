@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing.module';
+import { SingupService } from './signup/singup.service';
 
 
 
@@ -22,7 +23,8 @@ import { HomeRoutingModule } from './home.routing.module';
     VmessageModule,
     RouterModule,
     FormsModule,
-    HomeRoutingModule
-  ]
+    HomeRoutingModule,
+  ],
+  providers: [SingupService]
 })
 export class HomeModule { }
