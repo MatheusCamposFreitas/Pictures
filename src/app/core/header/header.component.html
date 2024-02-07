@@ -1,9 +1,9 @@
-<header class="fixed-top container">
+<header class="fixed-top mx-4">
     <nav class="navbar navbar-light bg-white">
         <a class="navbar-brand">Pictures</a>
-        <div  *ngIf="(user$ | async) as user; else login">
-            <i class="fa fa-user-circle mr-1"></i>
-            <a class="ml-2">{{ user.name }}</a>
+        <div *ngIf="(user$ | async) as user; else login">
+            <i class="fa fa-user-circle"></i>
+            <a class="px-1">{{ user.name }}</a>
             <a (click)="logout()">(Logout)</a>
         </div>
 
