@@ -19,7 +19,6 @@ export class AuthService {
       .pipe(tap(response => {
         const authToken = response.headers.get('x-access-token');
         this.userService.setToken(authToken!)
-        console.log(authToken);
       }));
   }
 }
