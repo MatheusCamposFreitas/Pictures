@@ -8,10 +8,10 @@ export class RequestInterceptor implements HttpInterceptor {
     constructor(private tokenService: TokenService) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (this.tokenService.hasToken()) {
-            const token = this.tokenService.getToken();
+            const token = this.tokenService.getToken() ?? "";
             req = req.clone({
                 setHeaders: {
-                    'Authorization': `Bearer ${token}`
+                    'x-access-token': token
                 }
             });
         }
