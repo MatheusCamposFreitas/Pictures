@@ -13,6 +13,7 @@ export class PhotoFormComponent implements OnInit {
   photoForm!: FormGroup;
 
   file!: File;
+  preview!: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,8 +37,15 @@ export class PhotoFormComponent implements OnInit {
       .subscribe(() => this.router.navigate(['']));
   }
 
-  onFileSelected(event: any): void {
-    if (event.target.files && event.target.files.length > 0)
-      this.file = event.target.files[0]
+  onFileSelected(event: any) {
+    if (event && event.target && event.target.files && event.target.files.length > 0) {
+      const selectedFile = event.target.files[0];
+      if (selectedFile) {
+        this.file = selectedFile;
+        const reader = new FileReader();
+        reader.onload = (event: any) => this.preview = event.target?.result;
+        reader.readAsDataURL(selectedFile);
+      }
+    }
   }
 }
