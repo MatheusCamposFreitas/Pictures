@@ -5,6 +5,7 @@ import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { NotFoundComponent } from './erros/not-found/not-found.component';
 import { photoListResolver } from './photos/photo-list/photo-list.resolver';
 import { authGuard } from './core/auth/auth.guard';
+import { PhotosDetailsComponent } from './photos/photos-details/photos-details.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
     path: 'p/add',
     component: PhotoFormComponent,
     canActivate: [authGuard]
+  },
+  {
+    path: 'photo/:photoId',
+    component: PhotosDetailsComponent,
   },
   {
     path: '**',

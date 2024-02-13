@@ -21,8 +21,10 @@ export class PhotoListComponent implements OnInit {
 
   // Extrai o nome de usuário da rota e carrega as fotos iniciais.
   ngOnInit(): void {
-    this.userName = this.activatedRoute.snapshot.params['userName'];
-    this.photos = this.activatedRoute.snapshot.data['photos'];
+    this.activatedRoute.params.subscribe(params => {
+      this.userName = params['userName'],
+      this.photos = this.activatedRoute.snapshot.data['photos'];
+    });
   }
 
   // O método é chamado para carregar mais fotos quando clica no botão 'Load more'.
