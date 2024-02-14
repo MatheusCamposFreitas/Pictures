@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NewUser } from './new-user';
+import { enviroment } from '../../../enviroment/enviroment';
 
-const API_URL = "http://localhost:3000";
+const API_URL = enviroment.ApiUrl;
 
 @Injectable()
 export class SingupService {
