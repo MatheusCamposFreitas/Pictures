@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Photo } from './photo';
 import { PhotoComment } from './photo-comment';
 import { catchError, map, of, throwError } from 'rxjs';
+import { enviroment } from '../../../enviroment/enviroment';
 
-const API = 'http://localhost:3000/';
+const API = enviroment.ApiUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,12 @@ export class PhotoService {
   constructor(private http: HttpClient) { }
 
   listFromUser(userName: string) {
-    return this.http.get<Photo[]>(`http://localhost:3000/${userName}/photos`);
+    return this.http.get<Photo[]>(`${API}${userName}/photos`);
   }
 
   listFromUserPaginated(userName: string, page: number) {
     const params = new HttpParams().append('page', page.toString())
-    return this.http.get<Photo[]>(`http://localhost:3000/${userName}/photos`, { params });
+    return this.http.get<Photo[]>(`${API}${userName}/photos`, { params });
   }
 
   upload(description: string, allowComments: boolean, file: File) {
