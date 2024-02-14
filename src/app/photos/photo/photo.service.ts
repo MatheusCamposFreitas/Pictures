@@ -43,4 +43,8 @@ export class PhotoService {
       { commentText }
       );
   }
+
+  removePhoto(id: number) {
+    return this.http.delete(`${API}photos/${id}`);
+  }
 }
