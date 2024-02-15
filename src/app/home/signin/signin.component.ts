@@ -16,7 +16,7 @@ export class SigninComponent implements OnInit, AfterViewInit {
     private authService: AuthService,
     private router: Router,
     private renderer: Renderer2
-    ) { }
+  ) { }
 
   ngAfterViewInit(): void { }
 
