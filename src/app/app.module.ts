@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PhotosModule } from './photos/photos.module';
 import { ErrosModule } from './erros/erros.module';
 import { CoreModule } from './core/core.module';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 @NgModule({
   declarations: [
