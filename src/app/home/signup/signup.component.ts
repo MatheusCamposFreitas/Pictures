@@ -5,6 +5,7 @@ import { UserNotTakenValidatorService } from './user-not-taken.validator.service
 import { NewUser } from './new-user';
 import { SingupService } from './singup.service';
 import { Router } from '@angular/router';
+import { crossFieldValidator } from './crossField.validator';
 
 @Component({
   selector: 'app-signup',
@@ -28,13 +29,17 @@ export class SignupComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]],
       userName: ['', [lowerCaseValidator(), Validators.required, Validators.minLength(2), Validators.maxLength(30)], this.userNotTakenValidatorService.checkUserNameTaken()],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(14)]],
+    }, {
+      validator: crossFieldValidator
     });
   }
 
   signUp() {
-    const newUser = this.signupForm.getRawValue() as NewUser;
-    this.singupService.signup(newUser)
-      .subscribe(() => this.router.navigate(['']),
-        err => console.log('error'));
+    if (this.signupForm.valid && !this.signupForm.pending) {
+      const newUser = this.signupForm.getRawValue() as NewUser;
+      this.singupService.signup(newUser)
+        .subscribe(() => this.router.navigate(['']),
+          err => console.log('error'));
+    }
   }
 }
