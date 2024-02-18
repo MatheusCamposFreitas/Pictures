@@ -1,6 +1,6 @@
-<header class="fixed-top mx-3">
-    <nav class="navbar navbar-light bg-white">
-        <a class="navbar-brand">
+<header class="fixed-top">
+    <nav class="navbar navbar-light ">
+        <a class="navbar-brand mx-4">
             <i tabindex="0" (keyup.space)="menu.toggle()" (click)="menu.toggle()" class="fa fa-bars mr-2"></i>
             Pictures
         </a>
@@ -13,7 +13,7 @@
             </ul>
         </app-menu>
 
-        <div *ngIf="(user$ | async) as user; else login">
+        <div class="mx-4" *ngIf="(user$ | async) as user; else login">
             <i class="fa fa-user-circle"></i>
             <a class="px-1">{{ user.name }}</a>
             <a (click)="logout()">(Logout)</a>

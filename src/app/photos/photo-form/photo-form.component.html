@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    <form [formGroup]="photoForm" class="row" (submit)="upload()">
+    <form [formGroup]="photoForm" class="row d-flex align-items-center" (submit)="upload()">
         <div class="col-md-6 text-center">
             <div class="form-group" *ngIf="!preview; else previewImage">
                 <button type="button" (click)="fileInput.click()" class="btn btn-primary">
@@ -19,8 +19,7 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                <textarea formControlName="description" class="form-control form-control-sm"
-                    placeholder="photo description"></textarea>
+                <textarea formControlName="description" class="form-control h-25" placeholder="photo description"></textarea>
                 <app-vmessage message="Max lenght is 255"
                     *ngIf="photoForm.get('description')?.hasError('maxlength')"></app-vmessage>
             </div>

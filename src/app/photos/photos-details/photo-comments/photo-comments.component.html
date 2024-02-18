@@ -13,10 +13,10 @@
         </li>
     </ul>
     <div class="mt-4">
-        <form [formGroup]="commentForm" (submit)="save()">
+        <form class="" [formGroup]="commentForm" (submit)="save()">
             <div class="input-group">
-                <textarea formControlName="comment" class="form-control"></textarea>
-                <div class="input-group-append">
+                <input formControlName="comment" class="form-control ">
+                <div class="input-group-append align-self-center ">
                     <button [disabled]="commentForm.invalid" class="btn btn-primary pull-left">Publish</button>
                 </div>
             </div>
