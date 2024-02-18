@@ -11,10 +11,10 @@ export class SingupService {
   constructor(private http: HttpClient) { }
 
   checkUserNameTaken(userName: string) {
-    return this.http.get(`${API_URL}/user/exists/${userName}`);
+    return this.http.get(`${API_URL}user/exists/${userName}`);
   }
 
   signup(newUser: NewUser) {
-    return this.http.post(`${API_URL}/user/signup/`, newUser);
+    return this.http.post(`${API_URL}user/signup/`, newUser);
   }
 }
